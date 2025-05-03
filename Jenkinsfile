@@ -1,20 +1,20 @@
-@Library('my-shared-lib') _
+@Library('my-shared-lib@main') _
 
 pipeline {
     agent any
 
-    stage('Checkout') {
-    steps {
-        git branch: 'main', url: 'https://github.com/yogeshpri/my-maven-app.git'
-    }
-}
-
+    stages {
+        stage('Checkout') {
+            steps {
+                git branch: 'main', url: 'https://github.com/yogeshpri/my-maven-app.git'
+            }
+        }
 
         stage('Build with Maven') {
             steps {
-                // Call the shared library function
-                mavenBuild('clean package')
+                mavenBuild()
             }
         }
     }
 }
+
