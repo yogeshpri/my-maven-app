@@ -3,13 +3,12 @@
 pipeline {
     agent any
 
-    stages {
-        stage('Checkout') {
-            steps {
-                // Clone your Maven app code
-                git 'https://github.com/yogeshpri/my-maven-app.git'
-            }
-        }
+    stage('Checkout') {
+    steps {
+        git branch: 'main', url: 'https://github.com/yogeshpri/my-maven-app.git'
+    }
+}
+
 
         stage('Build with Maven') {
             steps {
